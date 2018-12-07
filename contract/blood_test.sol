@@ -1,8 +1,12 @@
 pragma solidity ^0.4.25;
 
 contract blood_test{
-    
+
     /*
+
+    This contract is a test for storing blood test data inside
+    the contract by mapping the address to the data.
+
     Blood Array layout:
         Blood[0] = hemoglobin   // 115 - 165
         Blood[1] = whiteBlood   // 4 - 11
@@ -18,15 +22,15 @@ contract blood_test{
         Blood[11] = eosinophil  // 0 - 4        (divide by 10)
         Blood[12] = basophil    // 0 - 1        (divide by 10)
     */
-    
+
     mapping(address => uint[13]) private Blood;
-    
+
     function setBloodResult (uint[13] bloodResults) public {
         Blood[msg.sender] = bloodResults;
     }
-    
+
     function getBloodResult () public view returns (uint[13]){
         return Blood[msg.sender];
     }
-    
+
 }
