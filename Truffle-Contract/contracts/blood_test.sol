@@ -1,4 +1,4 @@
-pragma solidity ^0.4.25;
+pragma solidity ^0.5;
 
 contract blood_test{
 
@@ -25,11 +25,11 @@ contract blood_test{
 
     mapping(address => uint[13]) private Blood;
 
-    function setBloodResult (uint[13] bloodResults) public {
+    function setBloodResult (uint[13] memory bloodResults) public {
         Blood[msg.sender] = bloodResults;
     }
 
-    function getBloodResult () public view returns (uint[13]){
+    function getBloodResult () public view returns (uint[13] memory){
         return Blood[msg.sender];
     }
 
