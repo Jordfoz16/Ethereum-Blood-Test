@@ -1,14 +1,26 @@
-var myArray = "1, 3, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13";
+var myArray = [];
 
 var fromAddress = "0x33c9D9FB4B7576f9E3bc60Cf727f968106d72268";
 
-var testArray = [new BigNumber("1"), new BigNumber("2"), new BigNumber("3"), new BigNumber("4"), new BigNumber("5"), new BigNumber("6"), new BigNumber("7"), new BigNumber("8"), new BigNumber("9"), new BigNumber("10"), new BigNumber("11"), new BigNumber("12"), new BigNumber("13")];
-
-//var testArray = [new BigNumber("1"), new BigNumber("200")];
-
 $('#contract-form').submit(function(){
     event.preventDefault();
-    bloodContract.methods.setBloodResult(testArray).send({from: fromAddress, gas:3000000},
+
+    myArray.push(new BigNumber($('#hemoglobin').val()));
+    myArray.push(new BigNumber($('#whiteBlood').val()));
+    myArray.push(new BigNumber($('#platelet').val()));
+    myArray.push(new BigNumber($('#redBlood').val()));
+    myArray.push(new BigNumber($('#haematocrit').val()));
+    myArray.push(new BigNumber($('#MCV').val()));
+    myArray.push(new BigNumber($('#MCH').val()));
+    myArray.push(new BigNumber($('#MCHC').val()));
+    myArray.push(new BigNumber($('#neutrophil').val()));
+    myArray.push(new BigNumber($('#lymphocyte').val()));
+    myArray.push(new BigNumber($('#monocyte').val()));
+    myArray.push(new BigNumber($('#eosinophil').val()));
+    myArray.push(new BigNumber($('#basophil').val()));
+
+
+    bloodContract.methods.setBloodResult(myArray).send({from: fromAddress, gas:3000000},
         function(error, result){
             if(error){
                 console.log(error);
@@ -16,6 +28,8 @@ $('#contract-form').submit(function(){
                 console.log(result);
             }
         });
+
+    myArray = [];
 });
 
 $('#results').click(function(){
@@ -25,6 +39,7 @@ $('#results').click(function(){
                 console.log(error);
             }else{
                 console.log(result);
+                $('#blockchainResult').text('Results: ' + result);
             }
         });
 });
