@@ -64,7 +64,8 @@ function addTemplate(index) {
                                 <div class="col-sm-8"> \
                                     <input type="text" class="form-control" name="' + elements[index].id + '" id="' + elements[index].id + '"> \
                                 </div> \
-                            </div> ';
+                            </div>\
+                        </div>';
     
     return template;
 }
