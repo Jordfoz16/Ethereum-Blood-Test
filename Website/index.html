@@ -7,19 +7,49 @@
 <body>
 
     <div class="container">
-
+        
         <h1>Blood Results</h1>
 
         <p>Enter Blood Results</p>
 
-        <form id="contract-form">
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <button type="button" id="results" class="btn btn-primary">Get Results</button>
+        <form id="login-form" class="col-sm-12">
+            <div class="row form-group">
+                <label for="userAddress" class="col-sm-4 col-form-label">Users Address</label>
+                <input type="text" class="form-control col-sm-6" name="userAddress" id="userAddress" value="0x33c9D9FB4B7576f9E3bc60Cf727f968106d72268">
+                <button type="button" class="col-sm-1 btn btn-primary ml-5" id="addressButton">Login</button>
+            </div>
         </form>
+
+        <div class="row">
+            <button type="button" class="btn btn-primary ml-5" data-toggle="modal" data-target="#addResultsModal">Add Results</button>
+            <button type="button" id="results" class="btn btn-primary ml-5">Get Results</button>
+        </div>
+
+        <div class="modal" tabindex="-1" role="dialog" id="addResultsModal">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Add Results</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form id="contract-form">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" id="saveChanges" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        
 
         <h2>Blockchain Storage</h2>
         <p id="blockchainResult">Results: </p>
+
 
     </div>
 
@@ -27,12 +57,12 @@
     <script src="./scripts/utils/web3.min.js"></script>
     <script src="./scripts/utils/jquery-3.3.1.min.js"></script>
     <script src="./scripts/utils/bignumber.min.js"></script>
+    <script src="./scripts/utils/bootstrap.min.js"></script>
 
     <!--Contract ABI's-->
     <script src="./json/abi.js"></script>
 
     <!--My Scripts-->
-    <script src="./scripts/website-builder.js"></script>
     <script src="./scripts/contract.js"></script>
     <script src="./scripts/script.js"></script>
 </body>

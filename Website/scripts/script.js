@@ -1,44 +1,54 @@
-var myArray = [];
-
 var fromAddress = "0x33c9D9FB4B7576f9E3bc60Cf727f968106d72268";
 
-$('#contract-form').submit(function(){
+var elements = {
+    "name": ["Hemoglobin", "White Blood", "Platelet", "Red Blood", "Haematocrit", "MCV", "MCH", "MCHC", "Neutrophil", "Lymphocyte", "Monocyte", "Eosinophil", "Basophil"],
+    "id": ["hemoglobin", "whiteBlood", "platelet", "redBlood", "haematocrit", "MCV", "MCH", "MCHC", "neutrophil", "lymphocyte", "monocyte", "eosinophil", "basophil"]
+}
+
+loadWebsite();
+
+function loadWebsite() {
+    for (var i = 0; i < elements.id.length; i++) {
+        $('#contract-form').before('<div class="col-sm-12"> \
+                                        <div class="form-group row"> \
+                                            <label for="' + elements.id[i] + '" class="col-sm-4 col-form-label">' + elements.name[i] + '</label> \
+                                            <input type="text" class="form-control col-sm-8" name="' + elements.id[i] + '" id="' + elements.id[i] + '"> \
+                                        </div>\
+                                    </div>');
+    }
+}
+
+$('#addressButton').click(function(){
+    fromAddress = $('#userAddress').val();
+    console.log(fromAddress);
+    
+});
+
+$('#saveChanges').click(function () {
+    var myArray = [];
     event.preventDefault();
 
-    myArray.push(new BigNumber($('#hemoglobin').val()));
-    myArray.push(new BigNumber($('#whiteBlood').val()));
-    myArray.push(new BigNumber($('#platelet').val()));
-    myArray.push(new BigNumber($('#redBlood').val()));
-    myArray.push(new BigNumber($('#haematocrit').val()));
-    myArray.push(new BigNumber($('#MCV').val()));
-    myArray.push(new BigNumber($('#MCH').val()));
-    myArray.push(new BigNumber($('#MCHC').val()));
-    myArray.push(new BigNumber($('#neutrophil').val()));
-    myArray.push(new BigNumber($('#lymphocyte').val()));
-    myArray.push(new BigNumber($('#monocyte').val()));
-    myArray.push(new BigNumber($('#eosinophil').val()));
-    myArray.push(new BigNumber($('#basophil').val()));
+    for (var i = 0; i < elements.id.length; i++) {
+        var tag = '#' + elements.id[i];
+        myArray.push(new BigNumber($(tag).val()));
+    }    
 
-
-    bloodContract.methods.setBloodResult(myArray).send({from: fromAddress, gas:3000000},
-        function(error, result){
-            if(error){
+    bloodContract.methods.setBloodResult(myArray).send({ from: fromAddress, gas: 3000000 },
+        function (error, result) {
+            if (error) {
                 console.log(error);
-            }else{
+            } else {
                 console.log(result);
             }
         });
-
-    myArray = [];
 });
 
-$('#results').click(function(){
-    bloodContract.methods.getBloodResult().call({from: fromAddress},
-        function(error, result){
-            if(error){
+$('#results').click(function () {
+    bloodContract.methods.getBloodResult().call({ from: fromAddress },
+        function (error, result) {
+            if (error) {
                 console.log(error);
-            }else{
-                console.log(result);
+            } else {
                 $('#blockchainResult').text('Results: ' + result);
             }
         });
