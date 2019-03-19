@@ -23,7 +23,7 @@ contract Privileges {
     //Modifier that requires the sender to be a doctor
     modifier requireDoctor(){
         require(
-            isDoctor[msg.sender] == true || isAdmin[msg.sender] == true,
+            isDoctor[msg.sender] == true;
             "Minimum Privileges: Doctors"
         );
         _;
@@ -36,6 +36,14 @@ contract Privileges {
             "Minimum Privileges: Admin"
         );
         _;
+    }
+
+    modifier editPatientsRecords(uint patientsAddress){
+        if(isDoctor[msg.sender]){
+            if(isPatient[patientsAddress]){
+                _;
+            }
+        }
     }
 
     //Transfers the admin privileges to another address
