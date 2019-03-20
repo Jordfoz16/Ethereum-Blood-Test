@@ -1,15 +1,7 @@
 pragma solidity ^0.5;
 pragma experimental ABIEncoderV2;
 
-contract Patients {
-
-    /*
-        TODO:
-
-        Add multi-dimenstional arrays for the blood results
-        so that you can have multiple per patient. Instead of over
-        writting the results
-    */
+contract Patients{
 
     /*
     Blood Array layout:
@@ -34,27 +26,33 @@ contract Patients {
         uint16 height;
         uint16 weight;
         string bloodType;
-        uint ageEntered;
+        bool isPatient;
+        uint timestamp;
+    }
+    
+    struct PatientsBloodInfomation{
+        uint8[13] bloodResults;
+        uint timestamp;
     }
 
     mapping (address => PatientInfomation) patients;
-    mapping (address => uint8[13]) patientsBloodTest;
+    mapping (address => PatientsBloodInfomation[]) patientsBloodTest;
 
     //Adds a new patient into the contract
     function addPatient(address patientAddress, string memory gender, uint8 age, uint16 height, uint16 weight, string memory bloodType) public{
-        patients[patientAddress] = PatientInfomation(gender, age, height, weight, bloodType, now);
+        patients[patientAddress] = PatientInfomation(gender, age, height, weight, bloodType,true, now);
     }
 
     //Adds the patients blood results to the contract
     function addPatientBloodResults(address patientAddress, uint8[13] memory bloodResults) public{
-        patientsBloodTest[patientAddress] = bloodResults;
+        patientsBloodTest[patientAddress].push(PatientsBloodInfomation(bloodResults, now));
     }
 
     //Changes the age of the patient, also added the time the age was added
     //this can be calculated in javascript to get an upto date age. 
     function changeAge(address patientAddress, uint8 newAge) public{
         patients[patientAddress].age = newAge;
-        patients[patientAddress].ageEntered = now;
+        patients[patientAddress].timestamp = now;
     }
 
     //Changes the height of the patient
@@ -67,13 +65,21 @@ contract Patients {
         patients[patientAddress].weight = newWeight;
     }
 
+    function isPatient(address patientAddress) public view returns(bool){
+        return patients[patientAddress].isPatient;
+    }
+
     //Returns all infomation about the patient
     function getPatientInfomation(address patientAddress) public view returns(PatientInfomation memory){
         return patients[patientAddress];
     }
 
     //Returns all infomation about the patients blood results
-    function getPatientsBloodResults(address patientAddress) public view returns(uint8[13] memory){
-        return patientsBloodTest[patientAddress];
+    function getPatientsBloodResults(address patientAddress, uint index) public view returns(uint8[13] memory){
+        return patientsBloodTest[patientAddress][index].bloodResults;
+    }
+    
+    function getPatientsBloodResultsLength(address patientAddress) public view returns(uint){
+        return patientsBloodTest[patientAddress].length;
     }
 }

@@ -1,4 +1,5 @@
 pragma solidity ^0.5;
+pragma experimental ABIEncoderV2;
 
 contract Privileges {
 
@@ -23,7 +24,7 @@ contract Privileges {
     //Modifier that requires the sender to be a doctor
     modifier requireDoctor(){
         require(
-            isDoctor[msg.sender] == true;
+            isDoctor[msg.sender] == true,
             "Minimum Privileges: Doctors"
         );
         _;
@@ -38,7 +39,7 @@ contract Privileges {
         _;
     }
 
-    modifier editPatientsRecords(uint patientsAddress){
+    modifier editPatientsRecords(address patientsAddress){
         if(isDoctor[msg.sender]){
             if(isPatient[patientsAddress]){
                 _;
@@ -74,7 +75,6 @@ contract Privileges {
     function addPatient(address patientAddress) public requireDoctor{
         isPatient[patientAddress] = true;
     }
-
 
     function getPrivileges() public view returns (string memory){
         
