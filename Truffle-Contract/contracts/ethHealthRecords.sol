@@ -3,6 +3,12 @@ pragma experimental ABIEncoderV2;
 
 contract ethHealthRecords{
     
+
+    /*
+        TODO
+        - Create a way of transfering patient data to a new address incase private key is lost
+    */
+
     /*
     Blood Array layout:
         Blood[0] = hemoglobin   // 115 - 165
