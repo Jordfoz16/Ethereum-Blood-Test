@@ -60,9 +60,9 @@ contract ethHealthRecords{
     ////////////////////////////////////////////////////////////////////////////////////*/
 
     //Modifier that requires the address to be a patient
-    modifier requirePatient(address patientAddress){
+    modifier requirePatient(){
         require(
-            patients[patientAddress].isPatient,
+            patients[msg.sender].isPatient,
             "Minimum Privileges: Patient"
         );
         _;
@@ -71,7 +71,7 @@ contract ethHealthRecords{
     //Modifier that requires the sender to be a doctor
     modifier requireDoctor(){
         require(
-            isDoctor[msg.sender] == true,
+            isDoctor[msg.sender] == true || isAdmin[msg.sender] == true,
             "Minimum Privileges: Doctors"
         );
         _;
@@ -128,10 +128,20 @@ contract ethHealthRecords{
     function isPatient(address patientAddress) public view returns(bool){
         return patients[patientAddress].isPatient;
     }
-
+    
+    //Returns all infomation about the patient
+    function getPatientInfomation() public view requirePatient returns(PatientInfomation memory){
+        return patients[msg.sender];
+    }
+    
     //Returns all infomation about the patient
     function getPatientInfomation(address patientAddress) public view returns(PatientInfomation memory){
         return patients[patientAddress];
+    }
+
+    //Returns all infomation about the patients blood results
+    function getPatientsBloodResults(uint index) public view requirePatient returns(uint8[13] memory){
+        return patientsBloodTest[msg.sender][index].bloodResults;
     }
 
     //Returns all infomation about the patients blood results
@@ -139,6 +149,12 @@ contract ethHealthRecords{
         return patientsBloodTest[patientAddress][index].bloodResults;
     }
     
+    //Gets the length of the array for blood results
+    function getPatientsBloodResultsLength() public view returns(uint){
+        return patientsBloodTest[msg.sender].length;
+    }
+
+    //Gets the length of the array for blood results
     function getPatientsBloodResultsLength(address patientAddress) public view returns(uint){
         return patientsBloodTest[patientAddress].length;
     }
