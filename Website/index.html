@@ -1,70 +1,259 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <title>EthBloodResults</title>
     <link rel="stylesheet" href="./style/bootstrap.min.css">
 </head>
 
 <body>
 
+    <!--Nav Bar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Ethereum Blood Results</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Link</a>
+                        <a class="dropdown-item" href="#">Link</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Link</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a id="accessLevel" class="nav-link disabled" href="#">Access Level: None</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
-        
-        <h1>Blood Results</h1>
-
-        <p>Enter Blood Results</p>
-
-        <form id="login-form" class="col-sm-12">
-            <div class="row form-group">
-                <label for="userAddress" class="col-sm-4 col-form-label">Users Address</label>
-                <input type="text" class="form-control col-sm-6" name="userAddress" id="userAddress" value="0x33c9D9FB4B7576f9E3bc60Cf727f968106d72268">
-                <button type="button" class="col-sm-1 btn btn-primary ml-5" id="addressButton">Login</button>
-            </div>
-        </form>
 
         <div class="row">
-            <button type="button" class="btn btn-primary ml-5" data-toggle="modal" data-target="#addResultsModal">Add Results</button>
-            <button type="button" id="results" class="btn btn-primary ml-5">Get Results</button>
+            <div class="col-2"></div>
+            <form class="my-5 col-8" action="#">
+                <div class="form-group">
+                    <h1>Patients Address</h1>
+                    <input type="text" class="form-control" name="patientsAddress" id="patientsAddress"
+                        placeholder="Enter Patients Address">
+                    <small id="addressHelp" class="form-text text-muted">Enter the public key of the patient</small>
+                </div>
+                <div class="row">
+                    <div class="col"></div>
+                    <button id="patientButton" type="submit" class="btn btn-primary col-5">Submit</button>
+                    <div class="col"></div>
+                </div>
+
+            </form>
+            <div class="col-2"></div>
         </div>
 
-        <div class="modal" tabindex="-1" role="dialog" id="addResultsModal">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Add Results</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                    <form id="contract-form">
-                    </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" id="saveChanges" class="btn btn-primary" data-dismiss="modal">Save changes</button>
-                </div>
-              </div>
+
+        <div class="row pt-5 border-top">
+            <!--Patients Infomation-->
+            <div class="col-6">
+                <h1>
+                    Patients Infomation
+                </h1>
+
+                <form class="mt-4" action="#">
+                    <div class="form-group form-inline">
+                        <label for="patientsGender" class="col-3">Gender</label>
+                        <input type="text" class="form-control col-8" name="patientsGender" id="patientsGender"
+                            placeholder="Gender">
+                    </div>
+
+                    <div class="form-group form-inline">
+                        <label for="patientsAge" class="col-3">Age</label>
+                        <input type="text" class="form-control col-8" name="patientsAge" id="patientsAge"
+                            placeholder="Age">
+                    </div>
+
+                    <div class="form-group form-inline">
+                        <label for="patientsHeight" class="col-3">Height</label>
+                        <input type="text" class="form-control col-8" name="patientsHeight" id="patientsHeight"
+                            placeholder="Height">
+                    </div>
+
+                    <div class="form-group form-inline">
+                        <label for="patientsWeight" class="col-3">Weight</label>
+                        <input type="text" class="form-control col-8" name="patientsWeight" id="patientsWeight"
+                            placeholder="Weight">
+                    </div>
+
+                    <div class="form-group form-inline">
+                        <label for="patientsBloodType" class="col-3">Blood Type</label>
+                        <input type="text" class="form-control col-8" name="patientsBloodType" id="patientsBloodType"
+                            placeholder="Blood Type">
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col"></div>
+                        <button id="updateInfomation" type="save" class="btn btn-primary col-5">Save</button>
+                        <div class="col"></div>
+                    </div>
+
+                </form>
+
             </div>
-          </div>
 
-        
+            <!--Blood Results-->
+            <div class="col-6">
+                <h1>Blood Results</h1>
 
-        <h2>Blockchain Storage</h2>
-        <p id="blockchainResult">Results: </p>
+                <form class="mt-4">
+                    <div class="form-group form-inline">
+                        <label for="patientsHemoglobin" class="col-3">Hemoglobin</label>
+                        <input type="text" class="form-control col-8" name="patientsHemoglobin" id="patientsHemoglobin"
+                            placeholder="Hemoglobin">
+                    </div>
 
+                    <div class="form-group form-inline">
+                        <label for="patientsWhiteBlood" class="col-3">White Blood</label>
+                        <input type="text" class="form-control col-8" name="patientsWhiteBlood" id="patientsWhiteBlood"
+                            placeholder="White Blood">
+                    </div>
 
+                    <div class="form-group form-inline">
+                        <label for="patientsPlatelet" class="col-3">Platelet</label>
+                        <input type="text" class="form-control col-8" name="patientsPlatelet" id="patientsPlatelet"
+                            placeholder="Platelet">
+                    </div>
+
+                    <div class="form-group form-inline">
+                        <label for="patientsRedBlood" class="col-3">Red Blood</label>
+                        <input type="text" class="form-control col-8" name="patientsRedBlood" id="patientsRedBlood"
+                            placeholder="Red Blood">
+                    </div>
+
+                    <div class="form-group form-inline">
+                        <label for="patientsHaematocrit" class="col-3">Haematocrit</label>
+                        <input type="text" class="form-control col-8" name="patientsHaematocrit"
+                            id="patientsHaematocrit" placeholder="Haematocrit">
+                    </div>
+
+                    <div class="form-group form-inline">
+                        <label for="patientsMCV" class="col-3">MCV</label>
+                        <input type="text" class="form-control col-8" name="patientsMCV" id="patientsMCV"
+                            placeholder="MCV">
+                    </div>
+
+                    <div class="form-group form-inline">
+                        <label for="patientsMCH" class="col-3">MCH</label>
+                        <input type="text" class="form-control col-8" name="patientsMCH" id="patientsMCH"
+                            placeholder="MCH">
+                    </div>
+
+                    <div class="form-group form-inline">
+                        <label for="patientsMCHC" class="col-3">MCHC</label>
+                        <input type="text" class="form-control col-8" name="patientsMCHC" id="patientsMCHC"
+                            placeholder="MCHC">
+                    </div>
+
+                    <div class="form-group form-inline">
+                        <label for="patientsNeutrophil" class="col-3">Neutrophil</label>
+                        <input type="text" class="form-control col-8" name="patientsNeutrophil" id="patientsNeutrophil"
+                            placeholder="Neutrophil">
+                    </div>
+
+                    <div class="form-group form-inline">
+                        <label for="patientsLymphocyte" class="col-3">Lymphocyte</label>
+                        <input type="text" class="form-control col-8" name="patientsLymphocyte" id="patientsLymphocyte"
+                            placeholder="Lymphocyte">
+                    </div>
+
+                    <div class="form-group form-inline">
+                        <label for="patientsMonocyte" class="col-3">Monocyte</label>
+                        <input type="text" class="form-control col-8" name="patientsMonocyte" id="patientsMonocyte"
+                            placeholder="Monocyte">
+                    </div>
+
+                    <div class="form-group form-inline">
+                        <label for="patientsEosinophil" class="col-3">Eosinophil</label>
+                        <input type="text" class="form-control col-8" name="patientsEosinophil" id="patientsEosinophil"
+                            placeholder="Eosinophil">
+                    </div>
+
+                    <div class="form-group form-inline">
+                        <label for="patientsBasophil" class="col-3">Basophil</label>
+                        <input type="text" class="form-control col-8" name="patientsBasophil" id="patientsBasophil"
+                            placeholder="Basophil">
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col"></div>
+                        <button id="updateBloodResults" type="save" class="btn btn-primary col-5">Save</button>
+                        <div class="col"></div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <div class="row mt-5 pt-5 border-top">
+
+            <div class=" col-4 d-inline mr-auto">
+                <h1 class="">Doctors Comments</h1>
+            </div>
+            <div class="col-2 d-inline">
+                <button type="submit" class="btn btn-success ">Add Comment</button>
+            </div>
+
+            <div class="col-12 mt-2 pt-2 border border-dark">
+                <h5>Date - 21/05/2019</h5>
+                <br>
+                <h5>Comment:</h5>
+                <p>Example Comment</p>
+            </div>
+
+            <div class="col-12 mt-2 pt-2 border border-dark">
+                <h5>Date - 21/05/2019</h5>
+                <br>
+                <h5>Comment:</h5>
+                <p>Example Comment</p>
+            </div>
+
+            <div class="col-12 mt-2 pt-2 border border-dark">
+                <h5>Date - 21/05/2019</h5>
+                <br>
+                <h5>Comment:</h5>
+                <p>Example Comment</p>
+            </div>
+        </div>
     </div>
 
-    <!--Javascript libraries-->
-    <script src="./scripts/utils/web3.min.js"></script>
-    <script src="./scripts/utils/jquery-3.3.1.min.js"></script>
-    <script src="./scripts/utils/bignumber.min.js"></script>
-    <script src="./scripts/utils/bootstrap.min.js"></script>
-
-    <!--Contract ABI's-->
-    <script src="./json/abi.js"></script>
-
-    <!--My Scripts-->
-    <script src="./scripts/contract.js"></script>
-    <script src="./scripts/script.js"></script>
 </body>
+
+<!--Javascript libraries-->
+<script src="./scripts/utils/web3.min.js"></script>
+<script src="./scripts/utils/jquery-3.3.1.min.js"></script>
+<script src="./scripts/utils/bignumber.min.js"></script>
+<script src="./scripts/utils/bootstrap.min.js"></script>
+
+<!--Contract ABI's-->
+<script src="./json/abi.js"></script>
+<script src="./scripts/dapp.js"></script>
 
 </html>

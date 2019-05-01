@@ -6,18 +6,18 @@ contract ethHealthRecords{
     /*
     Blood Array layout:
         Blood[0] = hemoglobin   // 115 - 165
-        Blood[1] = whiteBlood   // 4 - 11
-        Blood[2] = platelet     // 150 - 450
-        Blood[3] = redBlood     // 38 - 58      (divid by 10)
-        Blood[4] = haematocrit  // 37 - 47      (divide by 100)
+        Blood[1] = White Blood   // 4 - 11
+        Blood[2] = Platelet     // 150 - 450
+        Blood[3] = Red Blood     // 38 - 58      (divid by 10)
+        Blood[4] = Haematocrit  // 37 - 47      (divide by 100)
         Blood[5] = MCV          // 76 - 98
         Blood[6] = MCH          // 27 - 32
         Blood[7] = MCHC         // 300 - 360
-        Blood[8] = neutrophil   // 2 - 7
-        Blood[9] = lymphocyte   // 1 - 4
-        Blood[10] = monocyte    // 2 - 8        (divide by 10)
-        Blood[11] = eosinophil  // 0 - 4        (divide by 10)
-        Blood[12] = basophil    // 0 - 1        (divide by 10)
+        Blood[8] = Neutrophil   // 2 - 7
+        Blood[9] = Lymphocyte   // 1 - 4
+        Blood[10] = Monocyte    // 2 - 8        (divide by 10)
+        Blood[11] = Eosinophil  // 0 - 4        (divide by 10)
+        Blood[12] = Basophil    // 0 - 1        (divide by 10)
     */
 
     struct PatientInfomation{
@@ -145,7 +145,7 @@ contract ethHealthRecords{
     }
 
     //Returns all infomation about the patients blood results
-    function getPatientsBloodResults(address patientAddress, uint index) public view returns(uint8[13] memory){
+    function getPatientsBloodResults(address patientAddress, uint8 index) public view returns(uint8[13] memory){
         return patientsBloodTest[patientAddress][index].bloodResults;
     }
     
