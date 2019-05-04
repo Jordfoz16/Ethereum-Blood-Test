@@ -145,7 +145,7 @@ contract ethHealthRecords{
     }
 
     //Returns all infomation about the patients blood results
-    function getPatientsBloodResults(address patientAddress, uint8 index) public view returns(uint8[13] memory){
+    function getPatientsBloodResults(address patientAddress, uint index) public view returns(uint8[13] memory){
         return patientsBloodTest[patientAddress][index].bloodResults;
     }
     

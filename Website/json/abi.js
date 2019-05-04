@@ -3,7 +3,8 @@ var abi = [
       "inputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "constructor"
+      "type": "constructor",
+      "signature": "constructor"
     },
     {
       "constant": false,
@@ -37,7 +38,8 @@ var abi = [
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x8f51c43c"
     },
     {
       "constant": false,
@@ -55,7 +57,8 @@ var abi = [
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x49e51581"
     },
     {
       "constant": false,
@@ -73,7 +76,8 @@ var abi = [
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x35c8fdc3"
     },
     {
       "constant": false,
@@ -91,7 +95,8 @@ var abi = [
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xe58420ea"
     },
     {
       "constant": false,
@@ -109,7 +114,8 @@ var abi = [
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xab991cac"
     },
     {
       "constant": true,
@@ -128,7 +134,8 @@ var abi = [
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x8f9c79ed"
     },
     {
       "constant": true,
@@ -172,7 +179,8 @@ var abi = [
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x0860e6e3"
     },
     {
       "constant": true,
@@ -221,7 +229,8 @@ var abi = [
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xae9b235b"
     },
     {
       "constant": true,
@@ -232,7 +241,7 @@ var abi = [
         },
         {
           "name": "index",
-          "type": "uint8"
+          "type": "uint256"
         }
       ],
       "name": "getPatientsBloodResults",
@@ -244,7 +253,8 @@ var abi = [
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x32dfda59"
     },
     {
       "constant": true,
@@ -263,7 +273,8 @@ var abi = [
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xf361af73"
     },
     {
       "constant": true,
@@ -282,7 +293,8 @@ var abi = [
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x72f8ae9c"
     },
     {
       "constant": true,
@@ -296,7 +308,8 @@ var abi = [
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xa9436649"
     },
     {
       "constant": false,
@@ -310,7 +323,8 @@ var abi = [
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x75829def"
     },
     {
       "constant": false,
@@ -324,7 +338,8 @@ var abi = [
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x70480275"
     },
     {
       "constant": false,
@@ -338,7 +353,8 @@ var abi = [
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x1785f53c"
     },
     {
       "constant": false,
@@ -352,7 +368,8 @@ var abi = [
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x4780468f"
     },
     {
       "constant": false,
@@ -366,7 +383,8 @@ var abi = [
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x98fc90e9"
     },
     {
       "constant": true,
@@ -380,7 +398,8 @@ var abi = [
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x357b39e1"
     },
     {
       "constant": false,
@@ -398,7 +417,8 @@ var abi = [
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xe2005b98"
     },
     {
       "constant": true,
@@ -435,6 +455,7 @@ var abi = [
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xf6bb0cf1"
     }
   ]
