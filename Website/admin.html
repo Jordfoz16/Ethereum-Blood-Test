@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>EthBloodResults</title>
+    <link rel="stylesheet" href="./style/bootstrap.min.css">
+</head>
+
+<body>
+
+    <!--Nav Bar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Ethereum Blood Results</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.html">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="./admin.html">Admin</a>
+                </li>
+                <li class="nav-item">
+                    <a id="accessLevel" class="nav-link disabled" href="#">Access Level: None</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row py-5 border-top">
+            <div class="col-12">
+                <h1>Doctor Managment</h1>
+            </div>
+
+            <div class="col-12">
+                <form>
+                    <div class="form-group">
+                        <label for="addDoctorInput">Add Doctor</label>
+                        <input type="text" class="form-control" id="addDoctorInput" aria-describedby="doctorHelp"
+                            placeholder="Enter new doctors address">
+                        <small id="doctorHelp" class="form-text text-muted">Adds a new doctor to the contract</small>
+                        <div class="valid-feedback">All Done!</div>
+                        <div class="invalid-feedback">Required a level of Admin</div>
+                    </div>
+
+                    <button id="addDoctor" type="save" class="btn btn-primary">Add Doctor</button>
+                </form>
+            </div>
+
+            <div class="col-12 mt-3">
+                <form>
+                    <div class="form-group">
+                        <label for="removeDoctorInput">Remove Doctor</label>
+                        <input type="text" class="form-control" id="removeDoctorInput" aria-describedby="doctorHelp"
+                            placeholder="Enter doctors address">
+                        <small id="doctorHelp" class="form-text text-muted">Removes a doctor from the contact</small>
+                        <div class="valid-feedback">All Done!</div>
+                        <div class="invalid-feedback">Required a level of Admin</div>
+                    </div>
+
+                    <button id="removeDoctor" type="save" class="btn btn-danger">Remove Doctor</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row py-5 border-top">
+            <div class="col-12">
+                <h1>Admin Managment</h1>
+            </div>
+
+            <div class="col-12 mt-3">
+                <form>
+                    <div class="form-group">
+                        <label for="addAdminInput">Transfer Admin</label>
+                        <input type="text" class="form-control" id="transferAdminInput" aria-describedby="adminHelp"
+                            placeholder="Enter new admin address">
+                        <small id="adminHelp" class="form-text text-muted">Transfers the admin right from this address to the new address</small>
+                        <div class="valid-feedback">All Done!</div>
+                        <div class="invalid-feedback">Required a level of Admin</div>
+                    </div>
+
+                    <button id="transferAdmin" type="save" class="btn btn-success">Transfer Admin</button>
+                </form>
+            </div>
+
+            <div class="col-12 mt-3">
+                <form>
+                    <div class="form-group">
+                        <label for="addAdminInput">Add Admin</label>
+                        <input type="text" class="form-control" id="addAdminInput" aria-describedby="adminHelp"
+                            placeholder="Enter new admin address">
+                        <small id="adminHelp" class="form-text text-muted">Adds a new admin to the contact</small>
+                        <div class="valid-feedback">All Done!</div>
+                        <div class="invalid-feedback">Required a level of Admin</div>
+                    </div>
+
+                    <button id="addAdmin" type="save" class="btn btn-primary">Add Admin</button>
+                </form>
+            </div>
+
+            <div class="col-12 mt-3">
+                <form>
+                    <div class="form-group">
+                        <label for="removeAdminInput">Remove Admin</label>
+                        <input type="text" class="form-control" id="removeAdminInput" aria-describedby="adminHelp"
+                            placeholder="Enter admins address">
+                        <small id="doctorHelp" class="form-text text-muted">Removes an admin from the contact</small>
+                        <div class="valid-feedback">All Done!</div>
+                        <div class="invalid-feedback">Required a level of Admin</div>
+                    </div>
+
+                    <button id="removeAdmin" type="save" class="btn btn-danger">Remove Admin</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row pt-5 border-top">
+
+        </div>
+    </div>
+
+</body>
+
+<!--Javascript libraries-->
+<script src="./scripts/utils/web3.min.js"></script>
+<script src="./scripts/utils/jquery-3.3.1.min.js"></script>
+<script src="./scripts/utils/bignumber.min.js"></script>
+<script src="./scripts/utils/bootstrap.min.js"></script>
+
+<!--Contract ABI's-->
+<script src="./json/abi.js"></script>
+<script src="./scripts/dapp.js"></script>
+
+</html>
