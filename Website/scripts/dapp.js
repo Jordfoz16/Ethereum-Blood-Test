@@ -1,4 +1,4 @@
-var contractAddress = "0x59c3500Be31a98a25F62C8B1E5bF97fE4Bd43f6f";
+var contractAddress = "0x8050964c6A1512a0221c2efDfef46D2E4E27e071";
 
 var smartContract;
 var account;
@@ -204,7 +204,9 @@ $('#updateInfomation').click(function (e) {
             } else {
                 console.log(result);
             }
-        });
+    });
+
+    console.log("Timestamp: " + Date.now());
 });
 
 $('#updateBloodResults').click(function (e) {
@@ -226,8 +228,6 @@ $('#updateBloodResults').click(function (e) {
     myArray.push(($('#patientsEosinophil').val()));
     myArray.push(($('#patientsBasophil').val()));
 
-    console.log(myArray);
-
     smartContract.methods.addPatientBloodResults(patientsAccount, myArray).send({ from: account, gas: 3000000 },
         function (error, result) {
             if (error) {
@@ -247,8 +247,9 @@ $('#updateBloodResults').click(function (e) {
             } else {
                 console.log(result);
             }
-        });
+    });
 
+    console.log("Timestamp: " + Date.now());
 });
 
 $('#addComment').click(function () {
@@ -263,6 +264,8 @@ $('#addComment').click(function () {
             }
         }
     );
+
+    console.log("Timestamp: " + Date.now());
 });
 
 $('#closeComment').click(function () {
@@ -314,7 +317,7 @@ $('#removeDoctor').click(function (e) {
 
     var removeAddress = $('#removeDoctorInput').val();
 
-    smartContract.methods.addDoctor(removeAddress).send({ from: account, gas: 3000000 },
+    smartContract.methods.removeDoctor(removeAddress).send({ from: account, gas: 3000000 },
         function (error, result) {
             if (error) {
                 $('#removeDoctorInput').addClass("is-invalid");
